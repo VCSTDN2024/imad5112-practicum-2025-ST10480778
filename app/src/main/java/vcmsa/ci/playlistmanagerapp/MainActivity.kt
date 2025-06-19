@@ -27,11 +27,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-      /// this is used to push the data entered in the array
-        intent.putStringArrayListExtra("SongTitle", ArrayList(SongTitle))
-        intent.putStringArrayListExtra("ArtistsName", ArrayList(ArtistsName))
-        intent.putIntegerArrayListExtra("Rating", ArrayList(Rating))
-        intent.putStringArrayListExtra("Comments", ArrayList(Comments))
+
 
      // Initialising of the elements in the UI
         val AddBtn = findViewById<Button>(R.id.AddBtn)
@@ -44,6 +40,7 @@ class MainActivity : AppCompatActivity() {
             showListOnDialog()
         }
         playlistBtn.setOnClickListener {
+            /// this is used to push the data entered in the array
             intent = Intent(this, detailedView::class.java)
             intent.putStringArrayListExtra("SongTitle", ArrayList(SongTitle))
             intent.putStringArrayListExtra("ArtistsName", ArrayList(ArtistsName))
@@ -70,38 +67,53 @@ class MainActivity : AppCompatActivity() {
         dialogBuilder.setTitle("Enter Details")
 
         val dialogView = layoutInflater.inflate(R.layout.activity_main, null)
-        val dataOne = dialogView.findViewById<EditText>(R.id.SongTitleEditText)
-        val dataTwo = dialogView.findViewById<EditText>(R.id.ArtistNameEditText)
-        val dataThree = dialogView.findViewById<EditText>(R.id.RatingEditText)
-        val dataFour = dialogView.findViewById<EditText>(R.id.CommentsEditText)
+        val dataOne = findViewById<EditText>(R.id.SongTitleEditText)
+        val dataTwo = findViewById<EditText>(R.id.ArtistNameEditText)
+        val dataThree = findViewById<EditText>(R.id.RatingEditText)
+        val dataFour = findViewById<EditText>(R.id.CommentsEditText)
 
         dialogBuilder.setView(dialogView)
      // to verify all the data inputs
 
         dialogBuilder.setPositiveButton("Add") { _, _ ->
-            val Song = dataOne.text.toString().trim()
-            val Artist = dataTwo.text.toString().trim()
-            val Rate = dataThree.text.toString().trim()
-            val Comment = dataFour.text.toString().trim()
+            val SongTitle = dataOne.text.toString().trim()
+            val ArtistsName = dataTwo.text.toString().trim()
+            val Rating = dataThree.text.toString().trim()
+            val Comments = dataFour.text.toString().trim()
 
 
-            if (Song.isEmpty() || Artist.isEmpty() || Rate.isEmpty() || Comment.isEmpty()) {
-                Snackbar.make(
-                    findViewById(android.R.id.content),
+            if (SongTitle.isEmpty() || ArtistsName.isEmpty() || Rating.isEmpty() || Comments.isEmpty()) {
+                Snackbar.make(findViewById(android.R.id.content),
                     "All required fields must be filled in.",
                     Snackbar.LENGTH_SHORT
                 ).show()
                 return@setPositiveButton
             }
 
-            val dataThree = Rate.toIntOrNull()
+            val dataThree = Rating.toIntOrNull()
             if (dataThree == null || dataThree <= 0) {
                 Toast.makeText(getApplicationContext(),"Enter number greater 0",Toast.LENGTH_SHORT).show();
-
+             return@setPositiveButton
             }
-        }
+                SongTitle.add( SongTitle)
+                ArtistsName.add(ArtistsName)
+                Rating.add(Rating)
+                Comments.add(Comments)
 
-    }
+            Snackbar.make(findViewById(android.R.id.content), "$SongTitle added to the packing list.", Snackbar.LENGTH_SHORT).show()
+            dialog.dismiss()
+
+
+         builder.setNegativeButton("Cancel") { dialog,_ ->
+         dialog.cancel()
+         }
+
+         builder.show()
+ }
+
+        }
 }
+
+
 
 
