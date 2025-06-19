@@ -34,7 +34,8 @@ class detailedView : AppCompatActivity() {
             intent.getIntegerArrayListExtra("Rating")?: arrayListOf()
             intent.getStringArrayListExtra("Comments")?: arrayListOf()
             startActivity(intent)
-            
+
+
         }
        AverageRatingButton.setOnClickListener {
 
