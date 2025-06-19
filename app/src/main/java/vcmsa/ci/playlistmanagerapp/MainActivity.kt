@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import androidx.activity.enableEdgeToEdge
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
+import com.google.android.material.snackbar.Snackbar
 import kotlin.system.exitProcess
 
 class MainActivity : AppCompatActivity() {
@@ -21,10 +23,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
-        val SongTitleEditText = findViewById<EditText>(R.id.SongTitleEditText)
-        val ArtistNameEditText = findViewById<EditText>(R.id.ArtistNameEditText)
-        val RatingEditText = findViewById<EditText>(R.id.RatingEditText)
-        val CommentsEditText = findViewById<EditText>(R.id.CommentsEditText)
+
         val AddBtn = findViewById<Button>(R.id.AddBtn)
         val playlistBtn = findViewById<Button>(R.id.PlaylistBtn)
         val exitBtn = findViewById<Button>(R.id.ExitBtn)
@@ -40,18 +39,32 @@ class MainActivity : AppCompatActivity() {
             intent.putIntegerArrayListExtra("Rating", ArrayList(Rating))
             intent.putStringArrayListExtra("Comments", ArrayList(Comments))
             startActivity(intent)}
-        else{
-            
 
-        }
         exitBtn.setOnClickListener {
             finishAffinity()
             exitProcess(1)
         }
 
 
+
         }
     private fun showListOnDialog(){
+        val builder = AlertDialog.Builder(this)
+        builder.setTitle("Add New Song")
+
+        //val view = layoutInflater.inflate(R.layout.dialog_add_Song, null)
+
+        val SongTitleEditText = findViewById<EditText>(R.id.SongTitleEditText)
+        val ArtistNameEditText = findViewById<EditText>(R.id.ArtistNameEditText)
+        val RatingEditText = findViewById<EditText>(R.id.RatingEditText)
+        val CommentsEditText = findViewById<EditText>(R.id.CommentsEditText)
+
+        //dialogBuilder.setView(dialogView)
+
+        //dialogBuilder.setPositiveButton("Add") { dialog, _ ->
+
+
+
 
     }
     }

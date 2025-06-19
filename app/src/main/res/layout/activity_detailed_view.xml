@@ -7,4 +7,54 @@
     android:layout_height="match_parent"
     tools:context=".detailedView">
 
+    <TextView
+        android:id="@+id/PlaylistViewTextView"
+        android:layout_width="322dp"
+        android:layout_height="295dp"
+        android:layout_marginStart="44.5dp"
+        android:layout_marginTop="38dp"
+        android:layout_marginEnd="44.5dp"
+        android:layout_marginBottom="399dp"
+        android:text=""
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/DisplayButton"
+        android:layout_width="157dp"
+        android:layout_height="54dp"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="255dp"
+        android:layout_marginBottom="232dp"
+        android:text="Display"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/AverageRatingButton"
+        android:layout_width="155dp"
+        android:layout_height="56dp"
+        android:layout_marginStart="247dp"
+        android:layout_marginEnd="19dp"
+        android:layout_marginBottom="232dp"
+        android:text="Average Rating"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/MainScreenButton"
+        android:layout_width="151dp"
+        android:layout_height="57dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginEnd="127dp"
+        android:layout_marginBottom="120dp"
+        android:text="Main Screen"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
