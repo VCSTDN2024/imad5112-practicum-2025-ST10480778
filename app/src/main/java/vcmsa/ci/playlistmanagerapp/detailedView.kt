@@ -23,6 +23,11 @@ class detailedView : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_detailed_view)
 
+        intent.getStringArrayListExtra("SongTitle") ?: arrayListOf()
+        intent.getStringArrayListExtra("ArtistName") ?: arrayListOf()
+        intent.getIntegerArrayListExtra("Rating")?: arrayListOf()
+        intent.getStringArrayListExtra("Comments")?: arrayListOf()
+
 
         val DisplayButton = findViewById<Button>(R.id.DisplayButton)
         val AverageRatingButton = findViewById<Button>(R.id.AverageRatingButton)
@@ -30,12 +35,8 @@ class detailedView : AppCompatActivity() {
 
 
         DisplayButton.setOnClickListener {
-            displayPlayList()
-            intent.getStringArrayListExtra("SongTitle") ?: arrayListOf()
-            intent.getStringArrayListExtra("ArtistName") ?: arrayListOf()
-            intent.getIntegerArrayListExtra("Rating")?: arrayListOf()
-            intent.getStringArrayListExtra("Comments")?: arrayListOf()
-            startActivity(intent)
+           displayPlayList()
+
 
         }
 
@@ -54,21 +55,23 @@ class detailedView : AppCompatActivity() {
         val output = StringBuilder()
         if (SongTitle.isNotEmpty()) {
 
-            for (i in .indices){
+            for (i in SongTitle.indices)
+            {
 
                 output.append("SongTitle: ${SongTitle[i]}\n")
                 output.append("ArtistName: ${ArtistName[i]}\n")
                 output.append("Rating: ${Rating[i]}\n")
                 output.append("Comments: ${Comments[i]}\n\n")
             }
-            PlaylistViewTextView.text = output.toString()
+            PlaylistViewTextView.text = output.toString()  // Show all the data that has been entered in the text view
         } else {
-            PlaylistViewTextView.text = "No data available to display."
-        }
+            PlaylistViewTextView.text = "No data available to display."  // Error handling for the when there is no dat to display
+
+
 
     }
     private fun calcAverage(){
-        
+
 
     }
 }

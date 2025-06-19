@@ -1,6 +1,7 @@
 package vcmsa.ci.playlistmanagerapp
 
 import android.content.Intent
+import android.media.Rating
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -45,26 +46,31 @@ class MainActivity : AppCompatActivity() {
             exitProcess(1)
         }
 
-
-
         }
     private fun showListOnDialog(){
-        val builder = AlertDialog.Builder(this)
-        builder.setTitle("Add New Song")
+        val dialogbuilder = AlertDialog.Builder(this)
+        dialogbuilder.setTitle("Add New Song")
 
-        //val view = layoutInflater.inflate(R.layout.dialog_add_Song, null)
+       val dialogView = layoutInflater.inflate(R.layout.activity_main, null)
 
-        val SongTitleEditText = findViewById<EditText>(R.id.SongTitleEditText)
-        val ArtistNameEditText = findViewById<EditText>(R.id.ArtistNameEditText)
-        val RatingEditText = findViewById<EditText>(R.id.RatingEditText)
-        val CommentsEditText = findViewById<EditText>(R.id.CommentsEditText)
+        val SongTitleEditText = dialogView.findViewById<EditText>(R.id.SongTitleEditText)
+        val ArtistNameEditText = dialogView.findViewById<EditText>(R.id.ArtistNameEditText)
+        val RatingEditText = dialogView.findViewById<EditText>(R.id.RatingEditText)
+        val CommentsEditText = dialogView.findViewById<EditText>(R.id.CommentsEditText)
 
-        //dialogBuilder.setView(dialogView)
+        dialogBuilder.setView(dialogView)
 
-        //dialogBuilder.setPositiveButton("Add") { dialog, _ ->
+        dialogBuilder.setPositiveButton("Add") { dialog, _ ->
+            val Songtitle = SongTitleEditText.text.toString().trim()
+            val Artist = ArtistNameEditText.text.toString().trim()
+            val Rating = RatingEditText.text.trim()
+            val Comments = CommentsEditText.text.toString().trim()
+            if (SongTitle.isEmpty() || ArtistsName.isEmpty() || Rating.isEmpty()) {
+                Snackbar.make(findViewById(android.R.id.content), "All required fields must be filled in.", Snackbar.LENGTH_SHORT).show()
+                return@setPositiveButton
+            }
 
-
-
-
-    }
+            val Rating= Rating.toIntOrNull()
+            if (rating == null || Rating <= 0)
+                Snackbar.make(findViewById(android.R.id.content), "Enter a valid number greater than zero")}
     }
