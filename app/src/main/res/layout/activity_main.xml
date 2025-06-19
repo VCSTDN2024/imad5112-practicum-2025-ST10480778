@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
+    android:background="@drawable/download"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
@@ -13,12 +14,14 @@
         android:layout_width="239dp"
         android:layout_height="60dp"
         android:layout_marginStart="85dp"
-        android:layout_marginTop="51dp"
+        android:layout_marginTop="48dp"
         android:layout_marginEnd="116dp"
+        android:background="@color/white"
         android:ems="10"
         android:hint="Enter Song Title"
         android:inputType="text"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.371"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -33,10 +36,13 @@
         android:ems="10"
         android:hint="Enter Artist Name"
         android:inputType="text"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.327"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.403" />
 
     <EditText
         android:id="@+id/RatingEditText"
@@ -49,8 +55,10 @@
         android:ems="10"
         android:hint="Enter Rating(1-5)"
         android:inputType="number"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.375"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -65,11 +73,13 @@
         android:ems="10"
         android:hint="Enter comment"
         android:inputType="text"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.424"
+        app:layout_constraintHorizontal_bias="0.412"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.818" />
 
     <Button
         android:id="@+id/AddBtn"
@@ -77,10 +87,11 @@
         android:layout_height="61dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="281dp"
-        android:layout_marginBottom="258dp"
+        android:layout_marginBottom="268dp"
         android:text="Add"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.2"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
@@ -89,23 +100,32 @@
         android:layout_height="63dp"
         android:layout_marginStart="282dp"
         android:layout_marginEnd="39dp"
-        android:layout_marginBottom="252dp"
+        android:layout_marginBottom="276dp"
         android:text="Playlist"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.303"
+        app:layout_constraintHorizontal_bias="0.54"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
         android:id="@+id/ExitBtn"
         android:layout_width="111dp"
         android:layout_height="64dp"
-        android:layout_marginStart="160dp"
-        android:layout_marginEnd="161dp"
-        android:layout_marginBottom="128dp"
+        android:layout_marginEnd="144dp"
+        android:layout_marginBottom="152dp"
         android:text="Exit"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <Button
+        android:id="@+id/ClearBtn"
+        android:layout_width="107dp"
+        android:layout_height="67dp"
+        android:layout_marginStart="41dp"
+        android:layout_marginEnd="124dp"
+        android:layout_marginBottom="154dp"
+        android:text="Clear"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/ExitBtn"
         app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

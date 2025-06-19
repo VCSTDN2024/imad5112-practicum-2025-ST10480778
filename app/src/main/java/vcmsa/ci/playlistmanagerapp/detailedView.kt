@@ -41,8 +41,6 @@ class detailedView : AppCompatActivity() {
         DisplayButton.setOnClickListener {
             // this is a module that helps with giving the button function
             displayPlayList()
-
-
         }
 
         AverageRatingButton.setOnClickListener {
@@ -54,7 +52,6 @@ class detailedView : AppCompatActivity() {
            val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
-
 
     }
 

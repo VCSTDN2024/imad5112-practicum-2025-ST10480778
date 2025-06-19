@@ -14,10 +14,10 @@ import androidx.core.view.ViewCompat
 import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import kotlin.system.exitProcess
-
+ // to suppress the name shadowing
 @Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
-
+  // Decaartion of the array list
     private val SongTitle = mutableListOf<String>()
     private val ArtistsName = mutableListOf<String>()
     private val Rating = mutableListOf<Int>()
@@ -27,31 +27,44 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
         setContentView(R.layout.activity_main)
+      /// this is used to push the data entered in the array
+        intent.putStringArrayListExtra("SongTitle", ArrayList(SongTitle))
+        intent.putStringArrayListExtra("ArtistsName", ArrayList(ArtistsName))
+        intent.putIntegerArrayListExtra("Rating", ArrayList(Rating))
+        intent.putStringArrayListExtra("Comments", ArrayList(Comments))
 
+     // Initialising of the elements in the UI
         val AddBtn = findViewById<Button>(R.id.AddBtn)
         val playlistBtn = findViewById<Button>(R.id.PlaylistBtn)
         val exitBtn = findViewById<Button>(R.id.ExitBtn)
-
+        val clearBtn= findViewById<Button>(R.id.ClearBtn)
 
         AddBtn.setOnClickListener {
+            //Modules for the function of adding the data into the array
             showListOnDialog()
         }
         playlistBtn.setOnClickListener {
-            val  intent = Intent(this, detailedView::class.java)
+            intent = Intent(this, detailedView::class.java)
             intent.putStringArrayListExtra("SongTitle", ArrayList(SongTitle))
             intent.putStringArrayListExtra("ArtistsName", ArrayList(ArtistsName))
             intent.putIntegerArrayListExtra("Rating", ArrayList(Rating))
             intent.putStringArrayListExtra("Comments", ArrayList(Comments))
             startActivity(intent)
         }
+        clearBtn.setOnClickListener {
+         // this is set to clear the editTexts
+            }
+
 
         exitBtn.setOnClickListener {
+
+            // to exit the appliction| to finish all activivty of the application to end appliction process
             finishAffinity()
             exitProcess(0)
         }
 
     }
-
+// funtion to show all data input
     private fun showListOnDialog() {
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setTitle("Enter Details")
@@ -63,6 +76,7 @@ class MainActivity : AppCompatActivity() {
         val dataFour = dialogView.findViewById<EditText>(R.id.CommentsEditText)
 
         dialogBuilder.setView(dialogView)
+     // to verify all the data inputs
 
         dialogBuilder.setPositiveButton("Add") { _, _ ->
             val Song = dataOne.text.toString().trim()
