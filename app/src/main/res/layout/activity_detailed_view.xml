@@ -26,12 +26,15 @@
         android:layout_width="157dp"
         android:layout_height="54dp"
         android:layout_marginStart="14dp"
+        android:layout_marginTop="445dp"
         android:layout_marginEnd="255dp"
         android:layout_marginBottom="232dp"
         android:text="Display"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/AverageRatingButton"
@@ -49,11 +52,11 @@
         android:id="@+id/MainScreenButton"
         android:layout_width="151dp"
         android:layout_height="57dp"
-        android:layout_marginTop="554dp"
+        android:layout_marginStart="134dp"
         android:layout_marginEnd="126dp"
         android:layout_marginBottom="120dp"
         android:text="Main Screen"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

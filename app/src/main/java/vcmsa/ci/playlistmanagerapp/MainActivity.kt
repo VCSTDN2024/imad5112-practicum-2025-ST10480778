@@ -3,8 +3,10 @@ package vcmsa.ci.playlistmanagerapp
 import android.content.Intent
 import android.media.Rating
 import android.os.Bundle
+import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
@@ -13,12 +15,13 @@ import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import kotlin.system.exitProcess
 
+@Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
 
     private val SongTitle = mutableListOf<String>()
-    private val ArtistsName= mutableListOf<String>()
-    private val  Rating= mutableListOf<Int>()
-    private val  Comments= mutableListOf<String>()
+    private val ArtistsName = mutableListOf<String>()
+    private val Rating = mutableListOf<Int>()
+    private val Comments = mutableListOf<String>()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -34,43 +37,57 @@ class MainActivity : AppCompatActivity() {
             showListOnDialog()
         }
         playlistBtn.setOnClickListener {
-            val intent = Intent(this, detailedView::class.java)
+            val  intent = Intent(this, detailedView::class.java)
             intent.putStringArrayListExtra("SongTitle", ArrayList(SongTitle))
             intent.putStringArrayListExtra("ArtistsName", ArrayList(ArtistsName))
             intent.putIntegerArrayListExtra("Rating", ArrayList(Rating))
             intent.putStringArrayListExtra("Comments", ArrayList(Comments))
-            startActivity(intent)}
+            startActivity(intent)
+        }
 
         exitBtn.setOnClickListener {
             finishAffinity()
-            exitProcess(1)
+            exitProcess(0)
         }
 
-        }
-    private fun showListOnDialog(){
-        val dialogbuilder = AlertDialog.Builder(this)
-        dialogbuilder.setTitle("Add New Song")
+    }
 
-       val dialogView = layoutInflater.inflate(R.layout.activity_main, null)
+    private fun showListOnDialog() {
+        val dialogBuilder = AlertDialog.Builder(this)
+        dialogBuilder.setTitle("Enter Details")
 
-        val SongTitleEditText = dialogView.findViewById<EditText>(R.id.SongTitleEditText)
-        val ArtistNameEditText = dialogView.findViewById<EditText>(R.id.ArtistNameEditText)
-        val RatingEditText = dialogView.findViewById<EditText>(R.id.RatingEditText)
-        val CommentsEditText = dialogView.findViewById<EditText>(R.id.CommentsEditText)
+        val dialogView = layoutInflater.inflate(R.layout.activity_main, null)
+        val dataOne = dialogView.findViewById<EditText>(R.id.SongTitleEditText)
+        val dataTwo = dialogView.findViewById<EditText>(R.id.ArtistNameEditText)
+        val dataThree = dialogView.findViewById<EditText>(R.id.RatingEditText)
+        val dataFour = dialogView.findViewById<EditText>(R.id.CommentsEditText)
 
         dialogBuilder.setView(dialogView)
 
-        dialogBuilder.setPositiveButton("Add") { dialog, _ ->
-            val Songtitle = SongTitleEditText.text.toString().trim()
-            val Artist = ArtistNameEditText.text.toString().trim()
-            val Rating = RatingEditText.text.trim()
-            val Comments = CommentsEditText.text.toString().trim()
-            if (SongTitle.isEmpty() || ArtistsName.isEmpty() || Rating.isEmpty()) {
-                Snackbar.make(findViewById(android.R.id.content), "All required fields must be filled in.", Snackbar.LENGTH_SHORT).show()
+        dialogBuilder.setPositiveButton("Add") { _, _ ->
+            val Song = dataOne.text.toString().trim()
+            val Artist = dataTwo.text.toString().trim()
+            val Rate = dataThree.text.toString().trim()
+            val Comment = dataFour.text.toString().trim()
+
+
+            if (Song.isEmpty() || Artist.isEmpty() || Rate.isEmpty() || Comment.isEmpty()) {
+                Snackbar.make(
+                    findViewById(android.R.id.content),
+                    "All required fields must be filled in.",
+                    Snackbar.LENGTH_SHORT
+                ).show()
                 return@setPositiveButton
             }
 
-            val Rating= Rating.toIntOrNull()
-            if (rating == null || Rating <= 0)
-                Snackbar.make(findViewById(android.R.id.content), "Enter a valid number greater than zero")}
+            val dataThree = Rate.toIntOrNull()
+            if (dataThree == null || dataThree <= 0) {
+                Toast.makeText(getApplicationContext(),"Enter number greater 0",Toast.LENGTH_SHORT).show();
+
+            }
+        }
+
     }
+}
+
+

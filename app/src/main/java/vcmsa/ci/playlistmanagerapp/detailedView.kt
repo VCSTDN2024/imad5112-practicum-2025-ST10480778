@@ -24,18 +24,22 @@ class detailedView : AppCompatActivity() {
         enableEdgeToEdge()
         setContentView(R.layout.activity_detailed_view)
 
+        // this intent is to get all the data entered and stored in the array
+
         intent.getStringArrayListExtra("SongTitle") ?: arrayListOf()
         intent.getStringArrayListExtra("ArtistName") ?: arrayListOf()
         intent.getIntegerArrayListExtra("Rating") ?: arrayListOf()
         intent.getStringArrayListExtra("Comments") ?: arrayListOf()
+        startActivity(intent)
 
-
+     // this is to initialise the elements in the UI
         val DisplayButton = findViewById<Button>(R.id.DisplayButton)
         val AverageRatingButton = findViewById<Button>(R.id.AverageRatingButton)
         val MainScreenButton = findViewById<Button>(MainScreenButton)
 
 
         DisplayButton.setOnClickListener {
+            // this is a module that helps with giving the button function
             displayPlayList()
 
 
@@ -47,7 +51,7 @@ class detailedView : AppCompatActivity() {
 
         MainScreenButton.setOnClickListener {
 
-            intent = Intent(this, MainActivity::class.java)
+           val intent = Intent(this, MainActivity::class.java)
             startActivity(intent)
         }
 
@@ -65,8 +69,7 @@ class detailedView : AppCompatActivity() {
                 output.append("Rating: ${Rating[i]}\n")
                 output.append("Comments: ${Comments[i]}\n\n")
             }
-            PlaylistViewTextView.text =
-                output.toString()  // Show all the data that has been entered in the text view
+            PlaylistViewTextView.text = output.toString()  // Show all the data that has been entered in the text view
         } else {
             PlaylistViewTextView.text =
                 "No data available to display."  // Error handling for the when there is no data to display
@@ -77,6 +80,7 @@ class detailedView : AppCompatActivity() {
     }
 
     private fun calcAverage() { val output = StringBuilder()
+
         var foundData= false
         for (i in Rating.indices) {
             if (Rating[i] >= 3) {

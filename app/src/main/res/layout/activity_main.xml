@@ -27,6 +27,7 @@
         android:layout_width="243dp"
         android:layout_height="63dp"
         android:layout_marginStart="69dp"
+        android:layout_marginTop="122dp"
         android:layout_marginEnd="99dp"
         android:layout_marginBottom="547dp"
         android:ems="10"
@@ -34,7 +35,8 @@
         android:inputType="text"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/RatingEditText"
@@ -46,7 +48,7 @@
         android:layout_marginBottom="477dp"
         android:ems="10"
         android:hint="Enter Rating(1-5)"
-        android:inputType="text"
+        android:inputType="number"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -57,6 +59,7 @@
         android:layout_width="243dp"
         android:layout_height="58dp"
         android:layout_marginStart="85dp"
+        android:layout_marginTop="277dp"
         android:layout_marginEnd="116dp"
         android:layout_marginBottom="396dp"
         android:ems="10"
@@ -65,7 +68,8 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.424"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/AddBtn"
