@@ -1,23 +1,19 @@
 package vcmsa.ci.playlistmanagerapp
 
 import android.content.Intent
-import android.media.Rating
 import android.os.Bundle
-import android.view.View
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
 import androidx.activity.enableEdgeToEdge
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.ViewCompat
-import androidx.core.view.WindowInsetsCompat
 import com.google.android.material.snackbar.Snackbar
 import kotlin.system.exitProcess
  // to suppress the name shadowing
 @Suppress("NAME_SHADOWING")
 class MainActivity : AppCompatActivity() {
-  // Decaartion of the array list
+  // Decalartion of the array list
     private val SongTitle = mutableListOf<String>()
     private val ArtistsName = mutableListOf<String>()
     private val Rating = mutableListOf<Int>()
@@ -37,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
         AddBtn.setOnClickListener {
             //Modules for the function of adding the data into the array
-            showListOnDialog()
+            showList()
         }
         playlistBtn.setOnClickListener {
             /// this is used to push the data entered in the array
@@ -62,7 +58,7 @@ class MainActivity : AppCompatActivity() {
 
     }
 // funtion to show all data input
-    private fun showListOnDialog() {
+    private fun showList() {
         val dialogBuilder = AlertDialog.Builder(this)
         dialogBuilder.setTitle("Enter Details")
 
@@ -91,27 +87,27 @@ class MainActivity : AppCompatActivity() {
             }
 
             val dataThree = Rating.toIntOrNull()
+            for (i in SongTitle.indices){
             if (dataThree == null || dataThree <= 0) {
                 Toast.makeText(getApplicationContext(),"Enter number greater 0",Toast.LENGTH_SHORT).show();
              return@setPositiveButton
             }
-                SongTitle.add( SongTitle)
+                SongTitle.add(dataOne )
                 ArtistsName.add(ArtistsName)
                 Rating.add(Rating)
                 Comments.add(Comments)
-
-            Snackbar.make(findViewById(android.R.id.content), "$SongTitle added to the packing list.", Snackbar.LENGTH_SHORT).show()
+            }
+            Snackbar.make(findViewById(android.R.id.content), "$SongTitle added to Playlist", Snackbar.LENGTH_SHORT).show()
             dialog.dismiss()
 
 
-         builder.setNegativeButton("Cancel") { dialog,_ ->
-         dialog.cancel()
-         }
+         builder.setNegativeButton("Cancel", { dialog, _ ->
+             dialog.cancel()
+         })
 
          builder.show()
  }
-
-        }
+    }
 }
 
 
