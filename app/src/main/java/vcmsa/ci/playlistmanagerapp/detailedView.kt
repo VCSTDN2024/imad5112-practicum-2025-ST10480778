@@ -1,5 +1,6 @@
 package vcmsa.ci.playlistmanagerapp
 
+import android.media.Rating
 import android.os.Bundle
 import android.widget.Button
 import android.widget.TextView
@@ -13,7 +14,7 @@ class detailedView : AppCompatActivity() {
 
     private lateinit var SongTitle:ArrayList<String>
     private lateinit var ArtistName: ArrayList<String>
-    private lateinit var Ratiing: ArrayList<Int>
+    private lateinit var Rating: ArrayList<Int>
     private lateinit var Comments:ArrayList<String>
     private lateinit var PlaylistViewTextView:TextView
 
@@ -29,22 +30,45 @@ class detailedView : AppCompatActivity() {
 
 
         DisplayButton.setOnClickListener {
+            displayPlayList()
             intent.getStringArrayListExtra("SongTitle") ?: arrayListOf()
             intent.getStringArrayListExtra("ArtistName") ?: arrayListOf()
             intent.getIntegerArrayListExtra("Rating")?: arrayListOf()
             intent.getStringArrayListExtra("Comments")?: arrayListOf()
             startActivity(intent)
 
-
         }
-       AverageRatingButton.setOnClickListener {
 
+       AverageRatingButton.setOnClickListener {
+                calcAverage()
        }
+
         MainScreenButton.setOnClickListener {
             val intent = intent(this,MainActivity::class.java)
             startActivity(intent)
         }
 
+
+    }
+    private fun displayPlayList(){
+        val output = StringBuilder()
+        if (SongTitle.isNotEmpty()) {
+
+            for (i in .indices){
+
+                output.append("SongTitle: ${SongTitle[i]}\n")
+                output.append("ArtistName: ${ArtistName[i]}\n")
+                output.append("Rating: ${Rating[i]}\n")
+                output.append("Comments: ${Comments[i]}\n\n")
+            }
+            PlaylistViewTextView.text = output.toString()
+        } else {
+            PlaylistViewTextView.text = "No data available to display."
+        }
+
+    }
+    private fun calcAverage(){
+        
 
     }
 }
