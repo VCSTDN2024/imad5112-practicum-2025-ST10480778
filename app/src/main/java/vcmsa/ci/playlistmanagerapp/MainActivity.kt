@@ -1,5 +1,6 @@
 package vcmsa.ci.playlistmanagerapp
 
+import android.content.Intent
 import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
@@ -33,7 +34,15 @@ class MainActivity : AppCompatActivity() {
             showListOnDialog()
         }
         playlistBtn.setOnClickListener {
-            // val intent
+            val intent = Intent(this, detailedView::class.java)
+            intent.putStringArrayListExtra("SongTitle", ArrayList(SongTitle))
+            intent.putStringArrayListExtra("ArtistsName", ArrayList(ArtistsName))
+            intent.putIntegerArrayListExtra("Rating", ArrayList(Rating))
+            intent.putStringArrayListExtra("Comments", ArrayList(Comments))
+            startActivity(intent)}
+        else{
+            
+
         }
         exitBtn.setOnClickListener {
             finishAffinity()
